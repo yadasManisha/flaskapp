@@ -16,7 +16,6 @@ pipeline {
             steps {
                 script {
                     def sshCommand = ''
-                    // Determine the environment and set the SSH key accordingly
                     if (BRANCH_NAME == 'prod') {
                         sshCommand = """ssh -i ${ssh_key_prod} ${prod_server_ip}"""
                     } else if (BRANCH_NAME == 'stage') {
