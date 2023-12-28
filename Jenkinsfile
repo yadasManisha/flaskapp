@@ -10,7 +10,7 @@ pipeline {
         uat_server_ip = 'ec2-13-233-54-99.ap-south-1.compute.amazonaws.com'
 
     }
-    
+       stages{
         stage('testing') {
             steps {
                 sh '''  
@@ -20,4 +20,5 @@ pipeline {
             }
         }
     }
+}
 
