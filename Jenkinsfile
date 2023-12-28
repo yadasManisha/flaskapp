@@ -5,9 +5,9 @@ pipeline {
 
     environment {
         ssh_key_prod = credentials('ssh_key')
-        prod-server-ip = 'ec2-13-126-204-124.ap-south-1.compute.amazonaws.com'
-        staging-server-ip = 'ec2-13-235-94-77.ap-south-1.compute.amazonaws.com'
-        uat-server-ip = 'ec2-13-233-54-99.ap-south-1.compute.amazonaws.com'
+        prod_server_ip = 'ec2-13-126-204-124.ap-south-1.compute.amazonaws.com'
+        staging_server_ip = 'ec2-13-235-94-77.ap-south-1.compute.amazonaws.com'
+        uat_server_ip = 'ec2-13-233-54-99.ap-south-1.compute.amazonaws.com'
 
     }
 
@@ -18,11 +18,11 @@ pipeline {
                     def sshCommand = ''
                     // Determine the environment and set the SSH key accordingly
                     if (BRANCH_NAME == 'prod') {
-                        sshCommand = """ssh -i ${ssh_key_prod} $prod-server-ip"""
+                        sshCommand = """ssh -i ${ssh_key_prod} ${prod_server_ip}"""
                     } else if (BRANCH_NAME == 'stage') {
-                        sshCommand = """ssh -i ${ssh_key_stage} $staging-server-ip"""
+                        sshCommand = """ssh -i ${ssh_key_stage} ${staging_server_ip}"""
                     } else if (BRANCH_NAME == 'uat') {
-                        sshCommand = """ssh -i ${ssh_key_uat} $uat-server-ip"""
+                        sshCommand = """ssh -i ${ssh_key_uat} ${uat_server_ip}"""
                     } else {
                         error "Unsupported environment"
                     }
